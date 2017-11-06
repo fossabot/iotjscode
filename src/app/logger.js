@@ -155,7 +155,7 @@ function createPopup(type, strong, message) {
   // Wait 30 sec then close the alert window.
   setTimeout(() => {
     lrt.alert('close');
-  }, 10000);
+  }, 3000);
 
   return lrt;
 }

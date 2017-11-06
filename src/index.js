@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import app from './app/main';
+import app from './app/demo';
 
 if (module.hot) {
-  module.hot.accept('./app/main', app);
+  module.hot.accept('./app/demo', app);
 }
 
 app();

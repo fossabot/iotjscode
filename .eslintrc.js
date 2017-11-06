@@ -1,32 +1,36 @@
-/* Copyright 2017 Samsung Electronics Co., Ltd. and other contributors
+/* 
+ * Copyright 2017-present Samsung Electronics Co., Ltd. and other contributors
  *
- * Licensed under the Apache License, Version 2.0 (the 'License');
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an 'AS IS' BASIS
+ * distributed under the License is distributed on an "AS IS" BASIS
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 
-var ignored_eslint_recommended = {
+var es6 = {
+  'generator-star-spacing': [2, 'after'],
+  'no-var': 2,
+  'prefer-rest-params': 2,
+  'prefer-spread': 2,
+  'rest-spread-spacing': 2,
+  'yield-star-spacing': [2, 'after'],
+}
+
+var eslintRecommended = {
   'no-console': 0,
+  'no-empty': 0, // TODO: remove this feature
 }
 
-var best_practices = {
-  'guard-for-in': 2,
-  'no-plusplus': 0,
-  'no-caller': 2,
-  'no-extend-native': 2,
-  'no-new-wrappers': 2,
-  'semi': 2,
-}
-
-var stylistic_issues = {
+var style = {
+  'no-multi-spaces': 2,
+  'no-multi-str': 2,
   'array-bracket-spacing': [2, 'never'],
   'block-spacing': [2, 'never'],
   'brace-style': 2,
@@ -39,61 +43,50 @@ var stylistic_issues = {
   'key-spacing': 2,
   'keyword-spacing': 2,
   'linebreak-style': 2,
-  'new-cap': 2,
-  'no-array-constructor': 2,
-  'no-multiple-empty-lines': [2, {
-    'max': 2
-  }],
-  'no-multi-spaces': 2,
-  'no-multi-str': 2,
-  'no-new-object': 2,
+  'no-multiple-empty-lines': [2, {max: 2}],
   'no-tabs': 2,
   'no-trailing-spaces': 2,
-  'operator-linebreak': 2,
-  'quotes': [2, 'single'],
   'semi-spacing': 2,
   'space-before-blocks': 2,
-  'multiline-comment-style': [2, 'starred-block'],
   'space-before-function-paren': [2, {
-    'anonymous': 'never',
-    'named': 'never',
+    anonymous: 'never',
+    named: 'never',
   }],
   'spaced-comment': [2, 'always'],
   'switch-colon-spacing': 2,
+  'quotes': [2, 'single'],
 }
 
-var es6 = {
-  'generator-star-spacing': [2, 'after'],
-  'no-var': 2,
-  'prefer-rest-params': 2,
-  'prefer-spread': 2,
-  'rest-spread-spacing': 2,
-  'yield-star-spacing': [2, 'after'],
+var syntax = {
+  'no-plusplus': 0,
+  'guard-for-in': 2,
+  'no-caller': 2,
+  'no-extend-native': 2,
+  'no-new-wrappers': 2,
+  'new-cap': 2,
+  'no-array-constructor': 2,
+  'no-new-object': 2,
+  'semi': 2,
 }
 
 module.exports = {
   'extends': 'eslint:recommended',
   'env': {
-    'browser': true,
     'node': true,
-    'es6': true,
-    'jquery': true,
-  },
-  'parserOptions': {
-    'ecmaVersion': 6,
-    'sourceType': 'module',
+    'es6': false,
   },
   'rules': Object.assign(
-    ignored_eslint_recommended,
-    stylistic_issues,
-    best_practices,
-    es6,
+    eslintRecommended,
+    style,
+    syntax,
     {
-      'max-len': ['error', {
-        'code': 120,
-        'ignoreUrls': true,
-        'ignoreTemplateLiterals': true,
-        'ignoreRegExpLiterals': true,
-      }]
-    }),
+      // Optional rules
+      'max-len': [2, {
+        code: 120,
+        tabWidth: 2,
+        ignoreUrls: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true
+      }],
+  }),
 }
